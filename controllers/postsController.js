@@ -6,7 +6,7 @@ function index(req, res){
     let filteredPost = posts;
 
     if (req.query.tag){
-        filteredPost = posts.filter(post => posts.tags.includes(req.query.tag))
+        filteredPost = posts.filter(post => posts.tags && post.tags.includes(req.query.tag))
     }
     
     res.json(filteredPost);
@@ -14,9 +14,9 @@ function index(req, res){
 
 function show(req, res){
 
-    const tag = req.params.tags
+    const slug = req.params.slug
 
-    const singlePost = posts.find(posts => posts.tags.includes(tag))
+    const singlePost = posts.find(posts => posts.slug.includes(slug))
     console.log(singlePost);
 
     if (!singlePost){

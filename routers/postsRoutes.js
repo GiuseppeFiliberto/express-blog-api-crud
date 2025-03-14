@@ -7,7 +7,7 @@ const postsController = require('../controllers/postsController')
 router.get('/', postsController.index);
 
 // Show route
-router.get('/:tags', postsController.show);
+router.get('/:slug', postsController.show);
 
 // Store Route
 // router.get('/', postsController.index);
