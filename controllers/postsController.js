@@ -3,7 +3,13 @@ const posts = require('../data/posts')
 
 function index(req, res){
 
-    res.json(posts)
+    let filteredPost = posts;
+
+    if (req.query.tag){
+        filteredPost = posts.filter(post => posts.tags.includes(req.query.tag))
+    }
+    
+    res.json(filteredPost);
 }
 
 function show(req, res){
@@ -12,8 +18,17 @@ function show(req, res){
 
     const singlePost = posts.find(posts => posts.tags.includes(tag))
     console.log(singlePost);
-    
+
+    if (!singlePost){
+        return res.status(404).json({
+            error: '404 not found',
+            message: 'post not found'
+        })
+    } else{
     res.json(singlePost)
+
+    }
+    
 }
 
 const destroy = (req, res) => {
