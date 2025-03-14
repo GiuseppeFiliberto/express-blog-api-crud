@@ -19,7 +19,8 @@ router.get('/:tags', postsController.show);
 // router.get('/', postsController.index);
 
 // Destroy Route
-// router.get('/', postsController.index);
+
+router.delete('/:title', postsController.destroy);
 
 
 module.exports = router

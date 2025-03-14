@@ -16,7 +16,27 @@ function show(req, res){
     res.json(singlePost)
 }
 
+const destroy = (req, res) => {
+
+    const postTitle = req.params.title
+   
+    const post = posts.find(posts => posts.title === postTitle)
+
+    if (!post){
+        return res.status(404).json({
+            error: '404 not found',
+            message: 'post not found'
+        })
+    } else{
+        posts.splice(posts.indexOf(post), 1)
+    }
+
+    res.sendStatus(204)
+
+}
+
 module.exports = {
     index,
-    show
+    show,
+    destroy
 }
