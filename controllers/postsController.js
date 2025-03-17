@@ -35,9 +35,8 @@ function store(req, res) {
 
     // this add a new post 
     const newPost = {
-
         title: req.body.title,
-        slug: req.body.slug,
+        slug: req.body.title.toLowerCase().replace(/ /g, '-'),
         content: req.body.content,
         image: req.body.image,
         tags: req.body.tags
@@ -55,8 +54,7 @@ function update(req, res) {
 
     const slug = req.params.slug
 
-    const singlePost = posts.find(posts => posts.slug.includes(slug))
-    console.log(singlePost);
+    const singlePost = posts.find(posts => posts.slug === slug)
 
     if (!singlePost){
         return res.status(404).json({
@@ -65,13 +63,16 @@ function update(req, res) {
         })
     } 
         // this will update the post selected
-
-        posts.title = req.body.title;
-        posts.content = req.body.content;
-        posts.image = req.body.image;
-        posts.tags = req.body.tags;
+        singlePost.title = req.body.title;
+        singlePost.slug = req.body.title.toLowerCase().replace(/ /g, '-');
+        singlePost.content = req.body.content;
+        singlePost.image = req.body.image;
+        singlePost.tags = req.body.tags;
 
         res.json(singlePost);
+        
+         console.log(singlePost);
+
     }
     
 
