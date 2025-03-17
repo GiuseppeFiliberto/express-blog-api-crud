@@ -13,7 +13,7 @@ router.get('/:slug', postsController.show);
 router.post('/', postsController.store);
 
 // Updat Route
-// router.put('/', postsController.update);
+ router.put('/:slug', postsController.update);
 
 // Modify Route
 // router.patch('/', postsController.modify);

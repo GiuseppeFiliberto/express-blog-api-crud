@@ -51,6 +51,31 @@ function store(req, res) {
     
 }
 
+function update(req, res) {
+
+    const slug = req.params.slug
+
+    const singlePost = posts.find(posts => posts.slug.includes(slug))
+    console.log(singlePost);
+
+    if (!singlePost){
+        return res.status(404).json({
+            error: '404 not found',
+            message: 'post not found'
+        })
+    } 
+        // this will update the post selected
+
+        posts.title = req.body.title;
+        posts.content = req.body.content;
+        posts.image = req.body.image;
+        posts.tags = req.body.tags;
+
+        res.json(singlePost);
+    }
+    
+
+
 const destroy = (req, res) => {
 
     const postTitle = req.params.title
@@ -74,5 +99,6 @@ module.exports = {
     index,
     show,
     store,
+    update,
     destroy
 }
