@@ -35,6 +35,7 @@ function store(req, res) {
 
     // this add a new post 
     const newPost = {
+
         title: req.body.title,
         slug: req.body.slug,
         content: req.body.content,
@@ -44,7 +45,8 @@ function store(req, res) {
 
     posts.push(newPost);
     console.log(posts);
-
+    
+    res.status(201);
     res.json(newPost);
     
 }

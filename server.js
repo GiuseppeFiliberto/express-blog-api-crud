@@ -2,12 +2,12 @@ const express = require ("express");
 const app = express();
 const port = 3008
 const postsRoute = require('./routers/postsRoutes');
-const { json } = require("body-parser");
 
-// middlewere
-app.use('/api/v1/posts', postsRoute);
 // body-parrser
 app.use(express.json())
+// middlewere
+app.use('/api/v1/posts', postsRoute);
+
 
 
 //server stars listening
