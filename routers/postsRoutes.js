@@ -10,13 +10,13 @@ router.get('/', postsController.index);
 router.get('/:slug', postsController.show);
 
 // Store Route
-// router.get('/', postsController.index);
+router.post('/', postsController.store);
 
 // Updat Route
-// router.get('/', postsController.index);
+// router.put('/', postsController.update);
 
 // Modify Route
-// router.get('/', postsController.index);
+// router.patch('/', postsController.modify);
 
 // Destroy Route
 

@@ -31,12 +31,22 @@ function show(req, res){
     
 }
 
-function store(req,res) {
+function store(req, res) {
 
+    // this add a new post 
     const newPost = {
         title: req.body.title,
-        
+        slug: req.body.slug,
+        content: req.body.content,
+        image: req.body.image,
+        tags: req.body.tags
     }
+
+    posts.push(newPost);
+    console.log(posts);
+
+    res.json(newPost);
+    
 }
 
 const destroy = (req, res) => {
@@ -61,5 +71,6 @@ const destroy = (req, res) => {
 module.exports = {
     index,
     show,
+    store,
     destroy
 }
