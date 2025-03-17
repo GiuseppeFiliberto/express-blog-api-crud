@@ -70,11 +70,35 @@ function update(req, res) {
         singlePost.tags = req.body.tags;
 
         res.json(singlePost);
-        
+
          console.log(singlePost);
 
     }
     
+function modify(req, res) {
+
+    const slug = req.params.slug
+
+    const singlePost = posts.find(posts => posts.slug === slug)
+
+    if (!singlePost){
+        return res.status(404).json({
+            error: '404 not found',
+            message: 'post not found'
+        })
+    } 
+        // this will update the post selected
+        singlePost.title = req.body.title;
+        singlePost.slug = req.body.title.toLowerCase().replace(/ /g, '-');
+        singlePost.content = req.body.content;
+        singlePost.image = req.body.image;
+        singlePost.tags = req.body.tags;
+
+        res.json(singlePost);
+        
+         console.log(singlePost);
+
+    }
 
 
 const destroy = (req, res) => {
@@ -101,5 +125,6 @@ module.exports = {
     show,
     store,
     update,
+    modify,
     destroy
 }

@@ -4,23 +4,22 @@ const postsController = require('../controllers/postsController')
 
 
 // Index route 
-router.get('/', postsController.index);
+ router.get('/', postsController.index);
 
 // Show route
-router.get('/:slug', postsController.show);
+ router.get('/:slug', postsController.show);
 
 // Store Route
-router.post('/', postsController.store);
+ router.post('/', postsController.store);
 
 // Updat Route
  router.put('/:slug', postsController.update);
 
 // Modify Route
-// router.patch('/', postsController.modify);
+ router.patch('/', postsController.modify);
 
 // Destroy Route
-
-router.delete('/:title', postsController.destroy);
+ router.delete('/:title', postsController.destroy);
 
 
 module.exports = router
