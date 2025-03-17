@@ -31,6 +31,14 @@ function show(req, res){
     
 }
 
+function store(req,res) {
+
+    const newPost = {
+        title: req.body.title,
+        
+    }
+}
+
 const destroy = (req, res) => {
 
     const postTitle = req.params.title
