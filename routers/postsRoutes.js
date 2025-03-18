@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const postsController = require('../controllers/postsController')
+const notFound = require('../middleware/error_404')
 
 
 // Index route 
@@ -21,5 +22,10 @@ const postsController = require('../controllers/postsController')
 // Destroy Route
  router.delete('/:title', postsController.destroy);
 
+ // ------
+
+ // Middlwares
+
+ router.use(notFound)
 
 module.exports = router

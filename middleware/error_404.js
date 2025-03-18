@@ -1,7 +1,7 @@
 function notFound(res, req, next){
     res.status(404).json({
         error: "error 404",
-        messagge: 'page not found'
+        messagge: 'resource not found'
     });
 }
 
