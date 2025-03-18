@@ -24,8 +24,6 @@ const notFound = require('../middleware/error_404')
 
  // ------
 
- // Middlwares
 
- router.use(notFound)
 
 module.exports = router

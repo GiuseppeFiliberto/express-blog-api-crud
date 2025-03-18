@@ -3,13 +3,18 @@ const app = express();
 const port = 3008
 const postsRoute = require('./routers/postsRoutes');
 const serverError = require('./middleware/serverError')
+const notFound = require('./middleware/error_404')
+
 
 // body-parrser
 app.use(express.json())
 // middlewere
 app.use('/api/v1/posts', postsRoute);
 
+
+// middleware errors
 app.use(serverError);
+app.use(notFound)
 
 
 //server stars listening
